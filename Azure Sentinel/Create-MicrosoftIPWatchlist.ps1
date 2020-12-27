@@ -123,7 +123,7 @@ $JSON = @"
 Write-Output "Adding content to WatchList"
 foreach($value in $RequestOutput.Values){
     Write-Output "Adding $($value.Name)"
-    $CSVContent = "Name, Ranges \r\n"
+    $CSVContent = "Name,Ranges\r\n"
 
     foreach($IP in $value.properties.addressPrefixes){
         $CSVContent += "$($value.name), $($IP)\r\n"

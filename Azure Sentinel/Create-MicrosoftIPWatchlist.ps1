@@ -92,7 +92,7 @@ $authHeader = @{
 $watchListFound = $true
 try{
     Write-Output "Check if watchlist exists"
-    $WatchList = Invoke-WebRequest -Uri "https://management.azure.com/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/$workspaceName/providers/Microsoft.SecurityInsights/watchlists/$WatchListName`?api-version=2019-01-01-preview"  -Headers $authHeader -Method GET -ContentType 'application/json; charset=utf-8' 
+    $WatchList = Invoke-WebRequest -Uri "https://management.azure.com/subscriptions/$subscriptionID/resourceGroups/$sentinelRG/providers/Microsoft.OperationalInsights/workspaces/$workspaceName/providers/Microsoft.SecurityInsights/watchlists/$WatchListName`?api-version=2019-01-01-preview"  -Headers $authHeader -Method GET -ContentType 'application/json; charset=utf-8' 
 }
 catch{
     $watchListFound = $false
@@ -114,7 +114,7 @@ $JSON = @"
     }
 }
 "@
-    Invoke-RestMethod -Uri "https://management.azure.com/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/$workspaceName/providers/Microsoft.SecurityInsights/watchlists/$WatchListName`?api-version=2019-01-01-preview" -Body $JSON -Headers $authHeader -Method PUT -ContentType 'application/json; charset=utf-8' 
+    Invoke-RestMethod -Uri "https://management.azure.com/subscriptions/$subscriptionID/resourceGroups/$sentinelRG/providers/Microsoft.OperationalInsights/workspaces/$workspaceName/providers/Microsoft.SecurityInsights/watchlists/$WatchListName`?api-version=2019-01-01-preview" -Body $JSON -Headers $authHeader -Method PUT -ContentType 'application/json; charset=utf-8' 
 }
 
 
@@ -144,7 +144,7 @@ $JSON = @"
 }
 "@
     try {
-        Invoke-RestMethod -Uri "https://management.azure.com/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/$workspaceName/providers/Microsoft.SecurityInsights/watchlists/$WatchListName`?api-version=2019-01-01-preview" -Body $JSON -Headers $authHeader -Method PUT -ContentType 'application/json; charset=utf-8' 
+        Invoke-RestMethod -Uri "https://management.azure.com/subscriptions/$subscriptionID/resourceGroups/$sentinelRG/providers/Microsoft.OperationalInsights/workspaces/$workspaceName/providers/Microsoft.SecurityInsights/watchlists/$WatchListName`?api-version=2019-01-01-preview" -Body $JSON -Headers $authHeader -Method PUT -ContentType 'application/json; charset=utf-8' 
     }
     catch {
         Write-Error 'Error adding data to watchlist'
